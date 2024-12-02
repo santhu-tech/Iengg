@@ -1,4 +1,4 @@
-package com.CT.Ecommerce.Consumer;
+/*package com.CT.Ecommerce.Consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -11,4 +11,4 @@ public class ConsumerGroup2 {
     public void consumeGroup2(ConsumerRecord<String, String> record) {
         System.out.println("Group2 - Received: " + record.value() + " from partition: " + record.partition());
     }
-}
+}*/
