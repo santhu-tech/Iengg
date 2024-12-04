@@ -16,7 +16,7 @@ public class KafkaConsumerService {
                 ", Offset=" + record.offset());
     }
 
-    @KafkaListener(topics = {"payment","notification"}, groupId = "group2", concurrency = "2")
+    @KafkaListener(topics = {"payments","notifications"}, groupId = "group2", concurrency = "2")
     public void consumeInventory(ConsumerRecord<String, String> record) {
         System.out.println("Consumed from inventory topic: " +
                 "Key=" + record.key() +
