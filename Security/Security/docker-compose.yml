@@ -1,0 +1,35 @@
+version: '3'
+services:
+  kafka:
+    image: wurstmeister/kafka:latest
+    environment:
+      - KAFKA_SSL_KEYSTORE_LOCATION=/ssl/kafka.server.keystore.jks
+      - KAFKA_SSL_KEYSTORE_PASSWORD=iEngg@17
+      - KAFKA_SSL_KEY_PASSWORD=iEngg
+      - KAFKA_SSL_TRUSTSTORE_LOCATION=/ssl/kafka.server.truststore.jks
+      - KAFKA_SSL_TRUSTSTORE_PASSWORD=iEngg@17
+      - KAFKA_ADVERTISED_LISTENERS=SSL://kafka:9093
+      - KAFKA_LISTENERS=SSL://0.0.0.0:9093
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_INTER_BROKER_LISTENER_NAME=SSL
+    volumes:
+      - ./src/main/resources/ssl:/ssl
+    ports:
+      - "9093:9093"
+    networks:
+      - kafka-net
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    environment:
+      - ZOOKEEPER_SERVER_ID=1
+    ports:
+      - "2181:2181"
+    networks:
+      - kafka-net
+
+networks:
+  kafka-net:
+    driver: bridge

@@ -1,0 +1,17 @@
+spring:
+  kafka:
+    bootstrap-servers: kafka:9093  # Ensure this matches the advertised listener in docker-compose
+    properties:
+      security.protocol: SSL
+      ssl.truststore.location: \src\main\resources\ssl\kafka.server.truststore.jks  # Truststore location
+      ssl.truststore.password: iEngg@17
+      ssl.keystore.location: \src\main\resources\ssl\kafka.server.keystore.jks  # Keystore location
+      ssl.keystore.password: iEngg@17
+      ssl.key.password: iEngg
+    consumer:
+      group-id: test-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
