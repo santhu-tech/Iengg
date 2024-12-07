@@ -1,0 +1,8 @@
+rule_files:
+  - "alerts.yml"
+
+alerting:
+  alert managers:
+    - static_configs:
+        - targets:
+            - "alert manager:9093"
